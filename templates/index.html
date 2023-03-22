@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iOS Shortcut Generator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js%22%3E</script>
+</head>
+<body>
+    <h1>iOS Shortcut Generator</h1>
+    <form id="shortcut-form">
+        <label for="user_input">What would you like the shortcut to do?</label>
+        <input type="text" name="user_input" id="user_input" required>
+        <button type="submit">Generate Shortcut</button>
+    </form>
+    <pre id="shortcut-result"></pre>
+    <script>
+        $("#shortcut-form").submit(function(event) {
+            event.preventDefault();
+            $.post("/", $("#shortcut-form").serialize(), function(data) {
+                $("#shortcut-result").text(data);
+            });
+        });
+    </script>
+</body>
+</html>
